@@ -1,10 +1,10 @@
 {
   "extends": ["config:base"],
+  "dependencyDashboard": true,
   "packageRules": [
     {
       "matchPaths": ["/quarkus/**", "/operator/**"],
-      "matchUpdateTypes": ["minor"],
-      "rangeStrategy": "replace"
+      "separateMinorPatch": true
     }
   ]
 }
