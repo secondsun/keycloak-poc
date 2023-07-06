@@ -1,0 +1,10 @@
+{
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "matchPaths": ["/quarkus/**", "/operator/**"],
+      "matchUpdateTypes": ["minor"],
+      "rangeStrategy": "replace"
+    }
+  ]
+}
