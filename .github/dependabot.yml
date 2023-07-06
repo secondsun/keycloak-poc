@@ -1,0 +1,70 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    open-pull-requests-limit: 999
+    rebase-strategy: disabled
+    schedule:
+      interval: daily
+      time: "00:00"
+      timezone: Etc/GMT
+    labels:
+      - area/dependencies
+      - area/ci
+  - package-ecosystem: npm
+    directory: /themes/src/main/resources/theme/keycloak/common/resources
+    schedule:
+      interval: daily
+      time: "00:00"
+      timezone: Etc/GMT
+    open-pull-requests-limit: 999
+    rebase-strategy: disabled
+    labels:
+      - area/dependencies
+      - area/admin/ui
+      - team/ui
+    ignore:
+      - dependency-name: bootstrap
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: npm
+    directory: js
+    open-pull-requests-limit: 999
+    rebase-strategy: disabled
+    versioning-strategy: increase
+    schedule:
+      interval: daily
+      time: "00:00"
+      timezone: Etc/GMT
+    labels:
+      - area/dependencies
+      - team/ui
+    ignore:
+      - dependency-name: react-error-boundary
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "maven"
+    directory: "/quarkus"
+    schedule:
+      interval: "daily"
+    labels:
+      - area/dependencies
+      - status/triage
+    ignore:
+    - dependency-name: "*"
+      update-types: ["version-update:semver-major"]
+    open-pull-requests-limit: 999
+    rebase-strategy: disabled
+    
+  # Maintain dependencies for your /operator
+  - package-ecosystem: "maven"
+    directory: "/operator"
+    schedule:
+      interval: "daily"
+    labels:
+      - area/dependencies
+      - status/triage
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    open-pull-requests-limit: 999
+    rebase-strategy: disabled
+
